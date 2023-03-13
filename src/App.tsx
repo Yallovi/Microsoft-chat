@@ -14,6 +14,7 @@ import {
 import { initializeIcons, registerIcons } from "@fluentui/react";
 import React from "react";
 import ChatComponents from "./components/Chat";
+import { CustomDataModelExampleContainer } from "./components/ContosoChatContainer";
 
 initializeIcons();
 registerIcons({ icons: DEFAULT_COMPONENT_ICONS });
@@ -21,13 +22,13 @@ registerIcons({ icons: DEFAULT_COMPONENT_ICONS });
 function App(): JSX.Element {
   const endpointUrl = "https://test-chat-1.communication.azure.com/";
   const userAccessToken =
-    "eyJhbGciOiJSUzI1NiIsImtpZCI6IjEwNiIsIng1dCI6Im9QMWFxQnlfR3hZU3pSaXhuQ25zdE5PU2p2cyIsInR5cCI6IkpXVCJ9.eyJza3lwZWlkIjoiYWNzOjVkYzJiOTMzLTdhNmQtNDhlOC05YjUwLTFiZjAzNzcxY2UwYV8wMDAwMDAxNy02YTdhLTJkMmMtZTE2Ny01NjNhMGQwMDQ0YzAiLCJzY3AiOjE3OTIsImNzaSI6IjE2Nzg0MzYyMzkiLCJleHAiOjE2Nzg1MjI2MzksInJnbiI6ImFtZXIiLCJhY3NTY29wZSI6ImNoYXQiLCJyZXNvdXJjZUlkIjoiNWRjMmI5MzMtN2E2ZC00OGU4LTliNTAtMWJmMDM3NzFjZTBhIiwicmVzb3VyY2VMb2NhdGlvbiI6InVuaXRlZHN0YXRlcyIsImlhdCI6MTY3ODQzNjIzOX0.bA4_QSVZlGPFAgnn7o4fPxL0nLOovtOxgcfHY_FcqBrxxiw41b8yFooY8yiLcnM1Ku3he63fTQkB6JbB0YbY03DndausQvFFWFyVEHxCPMR9CWa5kGsipljtqNtV6Y5eZdP2fnBVU_Yp--rXD92-6anKWhqRkEbpIejh2txKw2uW2v5tpAtpNl9k-6lQsOKq0sLleG7uU6B7BZjb1oWSgNdb3PULbhwdo5TMXi1niDFvzVyxQSAYys-mPAl-CsnprvjbMX_6uxfIJk8ffSYjFtoj8tdNpcKjQ499cwN7mpo78BCa9APJjg_1LEK5wbyp4APvFMKsMk_fAo_YrF7IlQ";
+    "eyJhbGciOiJSUzI1NiIsImtpZCI6IjEwNiIsIng1dCI6Im9QMWFxQnlfR3hZU3pSaXhuQ25zdE5PU2p2cyIsInR5cCI6IkpXVCJ9.eyJza3lwZWlkIjoiYWNzOjVkYzJiOTMzLTdhNmQtNDhlOC05YjUwLTFiZjAzNzcxY2UwYV8wMDAwMDAxNy03OWRmLWNmM2MtYmM2Ni01NjNhMGQwMDc5MDQiLCJzY3AiOjE3OTIsImNzaSI6IjE2Nzg2OTQ1NTgiLCJleHAiOjE2Nzg3ODA5NTgsInJnbiI6ImFtZXIiLCJhY3NTY29wZSI6ImNoYXQiLCJyZXNvdXJjZUlkIjoiNWRjMmI5MzMtN2E2ZC00OGU4LTliNTAtMWJmMDM3NzFjZTBhIiwicmVzb3VyY2VMb2NhdGlvbiI6InVuaXRlZHN0YXRlcyIsImlhdCI6MTY3ODY5NDU1OH0.BhfYJm3yamokNEXKlSRX4avDOCkHMZa8Dul8LSDAkuVSv4YD1h_Dp-FlHR-HUmlGpSlpci0XckW57oubqEn3pY6DpbMwpaO70AHBmTwpgTmiqVGzG4xcDmNObvSTHpZXMwM1_g0BHDfjgBOU2b0Dv5zTUiKUJ_8XCHSQ7iLMm_w2t8LxCw5JsjVcjU9nEALB7y5ypHwGBjCCJflBSDLB9A0qkU5h_q4hwTAbsmHAr-_uthOVBI8D9IKPM7ZwDp7-JBzlztoDbPdxccZ0ex8E1Uja5Tfq8puRrdGzf71uxkgsK4NKH-4JERWUV3SnkE-xaG7jH4Ph0WqkXSBNQjNlyQ";
   const userId =
-    "8:acs:5dc2b933-7a6d-48e8-9b50-1bf03771ce0a_00000017-6a7a-2d2c-e167-563a0d0044c0";
+    "8:acs:5dc2b933-7a6d-48e8-9b50-1bf03771ce0a_00000017-79df-cf3c-bc66-563a0d007904";
   const tokenCredential = new AzureCommunicationTokenCredential(
     userAccessToken
   );
-  const threadId = "19:EvsRy6dZUwIVhehaR4ssmnP4epby_J0WQhlIl6y3EgU1@thread.v2";
+  const threadId = "19:CKjTH9oqRDbyu8-QCGDvr9Uet8_-1-7xTIHE2v9jBNw1@thread.v2";
   const displayName = "John";
 
   // Instantiate the statefulChatClient
@@ -80,7 +81,7 @@ function App(): JSX.Element {
   //       {
   //         id: {
   //           communicationUserId:
-  //             "8:acs:5dc2b933-7a6d-48e8-9b50-1bf03771ce0a_00000017-6a97-f2a1-a166-563a0d000ca5",
+  //             "8:acs:5dc2b933-7a6d-48e8-9b50-1bf03771ce0a_00000017-79ec-3285-a166-563a0d006e5a",
   //         },
   //         displayName: "Jane",
   //       },
@@ -93,11 +94,11 @@ function App(): JSX.Element {
 
   const chatThreadClient = statefulChatClient.getChatThreadClient(threadId);
 
-  initializeThreadState(chatThreadClient!);
+  // initializeThreadState(chatThreadClient!);
 
   // * sendMessageRequest
   // const sendMessageRequest = {
-  //   content: "how are you?",
+  //   content: "1234qwerasdfzxv?",
   // };
   // let sendMessageOptions = {
   //   senderDisplayName: "Jane",
@@ -121,7 +122,21 @@ function App(): JSX.Element {
     <FluentThemeProvider>
       <ChatClientProvider chatClient={statefulChatClient}>
         <ChatThreadClientProvider chatThreadClient={chatThreadClient}>
-          <ChatComponents />
+          <CustomDataModelExampleContainer
+            userIdentifier={userId}
+            token={userAccessToken}
+            displayName={displayName}
+            threadId={threadId}
+            endpointUrl={endpointUrl}
+            botUserId={
+              "8:acs:5dc2b933-7a6d-48e8-9b50-1bf03771ce0a_00000017-7a2d-6f68-b967-563a0d007ada"
+              // "8:acs:5dc2b933-7a6d-48e8-9b50-1bf03771ce0a_00000017-79ec-3285-a166-563a0d006e5a"
+              // "8:acs:5dc2b933-7a6d-48e8-9b50-1bf03771ce0a_00000017-7a14-d298-3dfe-9c3a0d007b21"
+            }
+            botAvatar={"default"}
+            // participants={true}
+          />
+          {/* <ChatComponents /> */}
         </ChatThreadClientProvider>
       </ChatClientProvider>
     </FluentThemeProvider>
