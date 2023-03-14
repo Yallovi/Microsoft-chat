@@ -22,13 +22,13 @@ registerIcons({ icons: DEFAULT_COMPONENT_ICONS });
 function App(): JSX.Element {
   const endpointUrl = "https://test-chat-1.communication.azure.com/";
   const userAccessToken =
-    "eyJhbGciOiJSUzI1NiIsImtpZCI6IjEwNiIsIng1dCI6Im9QMWFxQnlfR3hZU3pSaXhuQ25zdE5PU2p2cyIsInR5cCI6IkpXVCJ9.eyJza3lwZWlkIjoiYWNzOjVkYzJiOTMzLTdhNmQtNDhlOC05YjUwLTFiZjAzNzcxY2UwYV8wMDAwMDAxNy03OWRmLWNmM2MtYmM2Ni01NjNhMGQwMDc5MDQiLCJzY3AiOjE3OTIsImNzaSI6IjE2Nzg2OTQ1NTgiLCJleHAiOjE2Nzg3ODA5NTgsInJnbiI6ImFtZXIiLCJhY3NTY29wZSI6ImNoYXQiLCJyZXNvdXJjZUlkIjoiNWRjMmI5MzMtN2E2ZC00OGU4LTliNTAtMWJmMDM3NzFjZTBhIiwicmVzb3VyY2VMb2NhdGlvbiI6InVuaXRlZHN0YXRlcyIsImlhdCI6MTY3ODY5NDU1OH0.BhfYJm3yamokNEXKlSRX4avDOCkHMZa8Dul8LSDAkuVSv4YD1h_Dp-FlHR-HUmlGpSlpci0XckW57oubqEn3pY6DpbMwpaO70AHBmTwpgTmiqVGzG4xcDmNObvSTHpZXMwM1_g0BHDfjgBOU2b0Dv5zTUiKUJ_8XCHSQ7iLMm_w2t8LxCw5JsjVcjU9nEALB7y5ypHwGBjCCJflBSDLB9A0qkU5h_q4hwTAbsmHAr-_uthOVBI8D9IKPM7ZwDp7-JBzlztoDbPdxccZ0ex8E1Uja5Tfq8puRrdGzf71uxkgsK4NKH-4JERWUV3SnkE-xaG7jH4Ph0WqkXSBNQjNlyQ";
+    "eyJhbGciOiJSUzI1NiIsImtpZCI6IjEwNiIsIng1dCI6Im9QMWFxQnlfR3hZU3pSaXhuQ25zdE5PU2p2cyIsInR5cCI6IkpXVCJ9.eyJza3lwZWlkIjoiYWNzOjVkYzJiOTMzLTdhNmQtNDhlOC05YjUwLTFiZjAzNzcxY2UwYV8wMDAwMDAxNy03ZmVhLWMzZTAtZGY2OC01NjNhMGQwMGI5NmIiLCJzY3AiOjE3OTIsImNzaSI6IjE2Nzg3OTU5MzkiLCJleHAiOjE2Nzg4ODIzMzksInJnbiI6ImFtZXIiLCJhY3NTY29wZSI6ImNoYXQiLCJyZXNvdXJjZUlkIjoiNWRjMmI5MzMtN2E2ZC00OGU4LTliNTAtMWJmMDM3NzFjZTBhIiwicmVzb3VyY2VMb2NhdGlvbiI6InVuaXRlZHN0YXRlcyIsImlhdCI6MTY3ODc5NTkzOX0.ry7enGi3uIQsueoEt33g8EoXbrXqpGonlVmQH15wDHBQnzsgd0Kdnq0BG99otokBVUultmFOn6EBQR3ig0PGB2GiqGb9rI15L1Oysr1iUCJ0KmRD7MK4WOF5YU3x2gWwSop8qW04752MsGglWD8iI6PqZUAVd4rTFc0fLi_tWmZHuvDWU0v6ySBXs1vuQmVHQT3LiD5NqV05PgWlpLqEmyKe5MlWE1Ym_aLSS6V8aDq4tbPbY9XwrM8cCMEat9TqMNJ8yM6zpMPJhVkyrHKkK20WmqjMypAfsmyhcDtn9jXL0ytNWQRK1jA7A7dnAc_9LtfxJFBRBHUfczwgMkUBoQ";
   const userId =
-    "8:acs:5dc2b933-7a6d-48e8-9b50-1bf03771ce0a_00000017-79df-cf3c-bc66-563a0d007904";
+    "8:acs:5dc2b933-7a6d-48e8-9b50-1bf03771ce0a_00000017-7fea-c3e0-df68-563a0d00b96b";
   const tokenCredential = new AzureCommunicationTokenCredential(
     userAccessToken
   );
-  const threadId = "19:CKjTH9oqRDbyu8-QCGDvr9Uet8_-1-7xTIHE2v9jBNw1@thread.v2";
+  const threadId = "19:UQ_g23CaBoHJqk_S26LZ5nLGzVqnfNj9UROW2sGsJjU1@thread.v2";
   const displayName = "John";
 
   // Instantiate the statefulChatClient
@@ -48,49 +48,49 @@ function App(): JSX.Element {
   );
 
   // * Create a threadID
-  // async function createChatThread() {
-  //   const createChatThreadRequest = {
-  //     topic: "Hello, World!",
-  //   };
+  async function createChatThread() {
+    const createChatThreadRequest = {
+      topic: "Hello, World!",
+    };
 
-  //   const createChatThreadOptions = {
-  //     participants: [
-  //       {
-  //         id: { communicationUserId: userId },
-  //         displayName: displayName,
-  //       },
-  //     ],
-  //   };
-  //   const createChatThreadResult = await chatClient.createChatThread(
-  //     createChatThreadRequest,
-  //     createChatThreadOptions
-  //   );
+    const createChatThreadOptions = {
+      participants: [
+        {
+          id: { communicationUserId: userId },
+          displayName: displayName,
+        },
+      ],
+    };
+    const createChatThreadResult = await chatClient.createChatThread(
+      createChatThreadRequest,
+      createChatThreadOptions
+    );
 
-  //   const threadId = createChatThreadResult?.chatThread?.id;
+    const threadId = createChatThreadResult?.chatThread?.id;
 
-  //   return threadId;
-  // }
+    return threadId;
+  }
 
   // let chatThreadClient: ChatThreadClient;
 
   //* addParticipantsRequest
-  // createChatThread().then(async (threadId) => {
-  //   console.log("threadId: ", threadId);
-  //   const addParticipantsRequest = {
-  //     participants: [
-  //       {
-  //         id: {
-  //           communicationUserId:
-  //             "8:acs:5dc2b933-7a6d-48e8-9b50-1bf03771ce0a_00000017-79ec-3285-a166-563a0d006e5a",
-  //         },
-  //         displayName: "Jane",
-  //       },
-  //     ],
-  //   };
+  createChatThread().then(async (threadId) => {
+    console.log("threadId: ", threadId);
+    const addParticipantsRequest = {
+      participants: [
+        {
+          id: {
+            communicationUserId:
+              "8:acs:5dc2b933-7a6d-48e8-9b50-1bf03771ce0a_00000017-8006-6abe-a166-563a0d00b5e0",
+          },
+          displayName: "1234qwerasdfzxcv",
+        },
+      ],
+    };
 
-  //   await chatThreadClient.addParticipants(addParticipantsRequest);
-  //   // chatThreadClient = statefulChatClient.getChatThreadClient(threadId!);
-  // });
+    await chatThreadClient.addParticipants(addParticipantsRequest);
+    // chatThreadClient = statefulChatClient.getChatThreadClient(threadId!);
+  });
 
   const chatThreadClient = statefulChatClient.getChatThreadClient(threadId);
 
