@@ -1,8 +1,13 @@
+/** @format */
+
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+  /* text-align: center; */
+}
+body {
+  margin: 0;
 }
 
 .logo {
@@ -40,3 +45,15 @@
 .read-the-docs {
   color: #888;
 }
+
+.teams-chat-last-message-time {
+}
+
+/* .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  justify-content: end;
+
+  background: gray;
+} */
