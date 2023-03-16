@@ -2,7 +2,9 @@
 
 import { Providers, ProviderState } from "@microsoft/mgt-element";
 import { Agenda, Get, Login, People } from "@microsoft/mgt-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+// import { MgtChat } from "@microsoft/mgt-chat";
+import { Chat } from "@microsoft/microsoft-graph-types";
 import "./App.css";
 
 import { ChatComponents } from "./components/Chat";
@@ -29,14 +31,22 @@ function useIsSignedIn(): [boolean] {
 }
 
 function App() {
-  const [isSignedIn] = useIsSignedIn();
+  const [chatId, setChatId] = useState<string>();
+  console.log("chatId: ", chatId);
+
+  const chatSelected = useCallback(
+    (e: Chat) => {
+      setChatId(e.id);
+    },
+    [setChatId]
+  );
 
   return (
-    <div className="App">
+    <div className="App h-full">
       <header className="flex justify-end bg-blue-200">
         <Login />
       </header>
-      <div className="flex h-94vh w-full">
+      <div className="flex h-full w-full">
         <div className={"w-100 h-full bg-red-200"}>
           <Get
             cacheEnabled={true}
@@ -63,13 +73,13 @@ function App() {
             ]}
             resource={
               //* get teams
-              // "/teams"
+              "/teams"
 
               //*get team's chats
               // "teams/0eaec614-bcdb-4a62-8075-812d40880818/channels"
 
               //*get message replies
-              "teams/cb4665a4-c090-4bda-b1fa-9939960ba67b/channels/19%3aTSL7WjS9aMCZjZvwdmugFS_Tw7-Vd7FnQhWobhYQlyU1%40thread.tacv2/messages/1678808771474/replies?top=1"
+              // "teams/cb4665a4-c090-4bda-b1fa-9939960ba67b/channels/19%3aTSL7WjS9aMCZjZvwdmugFS_Tw7-Vd7FnQhWobhYQlyU1%40thread.tacv2/messages/1678808771474/replies?top=1"
               //teams/<TeamID>/channels/<ChannelID>/messages/<MessageID>/replies
             }>
             <LastMessageItem template="value" />
@@ -77,7 +87,9 @@ function App() {
           </Get>
         </div>
         <div className="w-full bg-blue-400">
-          <Get
+          {/* {chatId && <MgtChat id={chatId} />} */}
+
+          {/* <Get
             cache-enabled={true}
             cache-invalidation-period={36000}
             id="messagesGet"
@@ -86,11 +98,9 @@ function App() {
               "teams/cb4665a4-c090-4bda-b1fa-9939960ba67b/channels/19%3aTSL7WjS9aMCZjZvwdmugFS_Tw7-Vd7FnQhWobhYQlyU1%40thread.tacv2/messages/1678808771474/replies"
             }>
             <ChatComponents template="value" />
-          </Get>
+          </Get> */}
         </div>
       </div>
-
-      {/* <div>{isSignedIn && <Agenda />}</div> */}
     </div>
   );
 }

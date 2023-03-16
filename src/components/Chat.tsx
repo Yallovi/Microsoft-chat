@@ -18,7 +18,7 @@ import {
 import { IContextualMenuItem, PartialTheme, Theme } from "@fluentui/react";
 
 export const ChatComponents = (props: any) => {
-  console.log("props: ", props);
+  // console.log("props: ", props);
 
   const credential = useMemo(
     () =>
