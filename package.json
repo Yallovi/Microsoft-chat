@@ -12,9 +12,12 @@
     "@azure/communication-calling": "1.4.4",
     "@azure/communication-chat": "1.2.0",
     "@azure/communication-react": "^1.5.0",
+    "@azure/msal-react": "^1.5.4",
     "@microsoft/mgt-element": "^2.9.2",
     "@microsoft/mgt-msal2-provider": "^2.9.2",
     "@microsoft/mgt-react": "^2.9.2",
+    "@microsoft/microsoft-graph-client": "^3.0.5",
+    "@microsoft/microsoft-graph-types": "^2.26.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "vite-tsconfig-paths": "^4.0.7"

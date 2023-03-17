@@ -280,6 +280,11 @@
   resolved "https://registry.yarnpkg.com/@azure/msal-common/-/msal-common-11.0.0.tgz#d35bfa6cdd2a5b8c036ce427aa3fd36f8f985239"
   integrity sha512-SZH8ObQ3Hq5v3ogVGBYJp1nNW7p+MtM4PH4wfNadBP9wf7K0beQHF9iOtRcjPOkwZf+ZD49oXqw91LndIkdk8g==
 
+"@azure/msal-react@^1.5.4":
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/@azure/msal-react/-/msal-react-1.5.4.tgz#63022be7207fb7e42c424857cfc02ca826ac8156"
+  integrity sha512-IimhiyECG7ltGejVAf2dvdYz8UFmVCHd3VyPM7F/tSmCVJk6gb9PSY62kom3DyM05TY+GukKyqF+oV10C9EDLg==
+
 "@babel/code-frame@^7.18.6":
   version "7.18.6"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.18.6.tgz#3b25d38c89600baa2dcc219edfa88a74eb2c427a"
@@ -446,7 +451,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.19.0"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.8.7":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.12.5", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.8.7":
   version "7.21.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.21.0.tgz#5b55c9d394e5fcf304909a8b00c07dc217b56673"
   integrity sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==
@@ -1043,12 +1048,20 @@
     msal "^1.4.4"
     tslib "^1.9.3"
 
+"@microsoft/microsoft-graph-client@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@microsoft/microsoft-graph-client/-/microsoft-graph-client-3.0.5.tgz#c661b5bb271fd59d34391b0657b8a78c02af9ab8"
+  integrity sha512-xQADFNLUhE78RzYadFZtOmy/5wBZenSZhVK193m40MTDC5hl1aYMQO1QOJApnKga8WcvMCDCU10taRhuXTOz5w==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    tslib "^2.2.0"
+
 "@microsoft/microsoft-graph-types-beta@^0.16.0-preview":
   version "0.16.0-preview"
   resolved "https://registry.yarnpkg.com/@microsoft/microsoft-graph-types-beta/-/microsoft-graph-types-beta-0.16.0-preview.tgz#07db0d7459130c9da525ca57bb0030a989b0bd12"
   integrity sha512-73d1b8pv8YnKx+oiQtMZDSey4ohmx/cfM/vFiAa5ZyLSj4nr9y/7wIT5jTIO+tkdniyBsfN/QQeDiRwyutcxAQ==
 
-"@microsoft/microsoft-graph-types@^2.0.0":
+"@microsoft/microsoft-graph-types@^2.0.0", "@microsoft/microsoft-graph-types@^2.26.0":
   version "2.26.0"
   resolved "https://registry.yarnpkg.com/@microsoft/microsoft-graph-types/-/microsoft-graph-types-2.26.0.tgz#11436d106db43d0973783d9d8e099ea5899aee78"
   integrity sha512-ABYHb80BRF5Sjo1CdbRdZpI4O0Jal85XVAGmTfnpSMOjUZi0HkESHP+oajVsPSQJyRTjEKrbneUC2qheBBdQGg==

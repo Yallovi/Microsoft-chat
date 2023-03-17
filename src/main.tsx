@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
@@ -8,6 +8,12 @@ import "virtual:windi.css";
 
 import { Providers } from "@microsoft/mgt-element";
 import { Msal2Provider } from "@microsoft/mgt-msal2-provider";
+
+import {
+  InteractionRequiredAuthError,
+  InteractionStatus,
+} from "@azure/msal-browser";
+import { AuthenticatedTemplate, useMsal } from "@azure/msal-react";
 
 Providers.globalProvider = new Msal2Provider({
   clientId: "0d30b135-2120-45cb-a82b-c1414688c674",
