@@ -54,60 +54,16 @@ export const CustomDataModelExampleContainer = (
     threadId: props.threadId,
   });
 
-  const onFetchAvatarPersonaData = (
-    userId: string
-  ): Promise<AvatarPersonaData> =>
-    new Promise((resolve) => {
-      if (userId === props.botUserId) {
-        return resolve({
-          imageInitials: props.botAvatar,
-          initialsColor: "white",
-        });
-      }
-    });
-
-  // Custom Menu Item Callback for Participant List
-  const onFetchParticipantMenuItems: ParticipantMenuItemsCallback = (
-    participantId,
-    userId,
-    defaultMenuItems
-  ) => {
-    console.log("Remote Participant", participantId);
-    console.log("Current Participant", userId);
-    let customMenuItems: IContextualMenuItem[] = [
-      {
-        key: "Custom Menu Item",
-        text: "Custom Menu Item",
-        onClick: () => console.log("Custom Menu Item Clicked"),
-      },
-    ];
-    if (defaultMenuItems) {
-      customMenuItems = customMenuItems.concat(defaultMenuItems);
-    }
-    return customMenuItems;
-  };
-
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
       {adapter ? (
         <ChatComposite
           fluentTheme={props.fluentTheme}
           adapter={adapter}
-          onFetchAvatarPersonaData={onFetchAvatarPersonaData}
-          onFetchParticipantMenuItems={onFetchParticipantMenuItems}
           locale={props.locale}
-          options={{ topic: true, errorBar: true }} //participantPane: true
         />
       ) : (
-        <h3
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: "50%",
-          }}>
-          Loading...
-        </h3>
+        <h3>Loading...</h3>
       )}
     </div>
   );
