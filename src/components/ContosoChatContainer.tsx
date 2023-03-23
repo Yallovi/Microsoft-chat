@@ -1,70 +1,66 @@
 /** @format */
 
+import { ChatThreadClient } from "@azure/communication-chat";
+import { AzureCommunicationTokenCredential } from "@azure/communication-common";
 import {
-  AzureCommunicationTokenCredential,
-  CommunicationUserIdentifier,
-} from "@azure/communication-common";
-import {
-  AvatarPersonaData,
-  ChatComposite,
-  CompositeLocale,
-  fromFlatCommunicationIdentifier,
-  ParticipantMenuItemsCallback,
-  useAzureCommunicationChatAdapter,
+  createStatefulChatClient,
+  FluentThemeProvider,
+  ChatClientProvider,
+  ChatThreadClientProvider,
+  DEFAULT_COMPONENT_ICONS,
 } from "@azure/communication-react";
-import { IContextualMenuItem, PartialTheme, Theme } from "@fluentui/react";
-import React, { useMemo } from "react";
+import { initializeIcons, registerIcons } from "@fluentui/react";
+import React from "react";
+import ChatComponents from "./Chat";
+import { Providers } from "@microsoft/mgt-element";
 
-export interface CustomDataModelExampleContainerProps {
-  /** UserIdentifier is of type CommunicationUserIdentifier see below how to construct it from a string input */
-  userIdentifier: string;
-  token: string;
-  displayName: string;
-  endpointUrl: string;
-  threadId: string;
-  botUserId: string;
-  botAvatar: string;
-  fluentTheme?: PartialTheme | Theme;
-  locale?: CompositeLocale;
-}
+initializeIcons();
+registerIcons({ icons: DEFAULT_COMPONENT_ICONS });
 
-export const CustomDataModelExampleContainer = (
-  props: CustomDataModelExampleContainerProps
-): JSX.Element => {
-  // Arguments to `useAzureCommunicationChatAdapter` must be memoized to avoid recreating adapter on each render.
-  const credential = useMemo(
-    () => new AzureCommunicationTokenCredential(props.token),
-    [props.token]
+function App(): JSX.Element {
+  const endpointUrl = "<Azure Communication Services Resource Endpoint>";
+  const userAccessToken =
+    "<Azure Communication Services Resource Access Token>";
+  const userId = "<User Id associated to the token>";
+  const tokenCredential = new AzureCommunicationTokenCredential(
+    userAccessToken
   );
+  const threadId = "<Get thread id from chat service>";
+  const displayName = "<Display Name>";
 
-  const userId = useMemo(
-    () =>
-      fromFlatCommunicationIdentifier(
-        props.userIdentifier
-      ) as CommunicationUserIdentifier,
-    [props.userIdentifier]
-  );
-
-  const adapter = useAzureCommunicationChatAdapter({
-    endpoint: props.endpointUrl,
-    userId,
-    // Data model injection: The display name for the local user comes from Contoso's data model.
-    displayName: props.displayName,
-    credential,
-    threadId: props.threadId,
+  // Instantiate the statefulChatClient
+  const statefulChatClient = createStatefulChatClient({
+    userId: { communicationUserId: userId },
+    displayName: displayName,
+    endpoint: endpointUrl,
+    credential: tokenCredential,
   });
 
+  // Listen to notifications
+  statefulChatClient.startRealtimeNotifications();
+
+  const chatThreadClient = statefulChatClient.getChatThreadClient(threadId);
+
+  initializeThreadState(chatThreadClient);
+
   return (
-    <div style={{ height: "100vh", width: "100vw" }}>
-      {adapter ? (
-        <ChatComposite
-          fluentTheme={props.fluentTheme}
-          adapter={adapter}
-          locale={props.locale}
-        />
-      ) : (
-        <h3>Loading...</h3>
-      )}
-    </div>
+    <FluentThemeProvider>
+      <ChatClientProvider chatClient={statefulChatClient}>
+        <ChatThreadClientProvider chatThreadClient={chatThreadClient}>
+          <ChatComponents />
+        </ChatThreadClientProvider>
+      </ChatClientProvider>
+    </FluentThemeProvider>
   );
-};
+}
+
+async function initializeThreadState(
+  chatThreadClient: ChatThreadClient
+): Promise<void> {
+  await chatThreadClient.getProperties();
+  for await (const _page of chatThreadClient.listParticipants().byPage()) {
+    // Simply fetching participants updates the cached state in client.
+  }
+}
+
+export default App;
